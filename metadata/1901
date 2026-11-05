@@ -1,0 +1,35 @@
+{
+  "name": "HATCHIEggy #1901",
+  "description": "HATCHIEggy #1901 \u2014 Every Egg Holds a Legend. A Common egg from the HATCHIEggy collection of 4,444 on BNB Chain. All eggs share the same golden cracked crystal egg artwork.",
+  "image": "https://www.hatchieggy.fun/assets/hero.jpg",
+  "attributes": [
+    {
+      "trait_type": "Shell",
+      "value": "Rose Quartz"
+    },
+    {
+      "trait_type": "Crystal",
+      "value": "Diamond"
+    },
+    {
+      "trait_type": "Gold Trim",
+      "value": "Thin"
+    },
+    {
+      "trait_type": "Glow",
+      "value": "Soft"
+    },
+    {
+      "trait_type": "Base",
+      "value": "Crystal"
+    },
+    {
+      "trait_type": "Aura",
+      "value": "Mystic"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    }
+  ]
+}
