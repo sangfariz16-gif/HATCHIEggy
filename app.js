@@ -43,8 +43,11 @@
     var priceEl = document.getElementById('priceNow');
     callWithFallback(SEL_TOTAL_MINTED).then(function (hex) {
       var n = parseUint(hex);
-      if (mintedEl) mintedEl.textContent = isNaN(n) ? 'unavailable' : (n.toLocaleString('en-US') + ' / 4,444');
-    }).catch(function () { if (mintedEl) mintedEl.textContent = 'unavailable'; });
+      var txt = isNaN(n) ? 'unavailable' : (n.toLocaleString('en-US') + ' / 4,444');
+      if (mintedEl) mintedEl.textContent = txt;
+      var limitedEl = document.getElementById('limitedMinted');
+      if (limitedEl) limitedEl.textContent = txt;
+    }).catch(function () { if (mintedEl) mintedEl.textContent = 'unavailable'; var le = document.getElementById('limitedMinted'); if (le) le.textContent = 'unavailable'; });
     callWithFallback(SEL_MINT_OPEN).then(function (hex) {
       var open = parseUint(hex) === 1;
       if (statusEl) statusEl.textContent = open ? 'Open' : 'Closed';
