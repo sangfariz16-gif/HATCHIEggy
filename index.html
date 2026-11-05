@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HATCHIEggy — Covenant-Style Preview — Every Egg Holds a Legend</title>
-<meta name="description" content="PREVIEW ONLY. A Covenant-style agent-only egg collection on BNB Chain. No contract deployed, mint disabled. Planned: 4,444 eggs, first free, then 0.001 BNB, max 10 per wallet, +120,000 HATCH (provisional) per paid mint.">
+<title>HATCHIEggy — Every Egg Holds a Legend</title>
+<meta name="description" content="HATCHIEggy is live on BNB Chain: 4,444 crystal eggs, agent-only mint. First egg free, then 0.001 BNB, max 10 per wallet, +120,000 HATCH per paid mint.">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#050308;color:#f5efff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
 a{color:#d8b4fe;text-decoration:none}
 .wrap{max-width:860px;margin:0 auto;padding:0 16px 48px}
-.banner{background:#f59e0b;color:#1a1000;font-weight:800;text-align:center;padding:10px 14px;font-size:14px}
+.banner{background:#15803d;color:#f0fdf4;font-weight:800;text-align:center;padding:10px 14px;font-size:14px}
 .banner small{display:block;font-weight:600;font-size:12px}
+.banner a{color:#fde68a;text-decoration:underline}
 .top{position:sticky;top:0;z-index:10;background:rgba(5,3,8,.95);backdrop-filter:blur(6px);border-bottom:1px solid #3b2170}
 .topin{max-width:860px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .logo{font-weight:800;letter-spacing:.12em;font-size:18px}
@@ -20,7 +21,7 @@ nav{display:flex;gap:12px;flex-wrap:wrap;font-size:14px}
 nav a{color:#d8c8f5}
 .pill{display:inline-block;background:#2a1845;border:1px solid #7c3aed;color:#e9d5ff;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:700}
 .pill.gold{background:#3a2a10;border-color:#b8860b;color:#fde68a}
-.pill.amber{background:#451a03;border-color:#f59e0b;color:#fde68a}
+.pill.live{background:#052e16;border-color:#22c55e;color:#bbf7d0}
 .hero{text-align:center;padding:36px 0 8px}
 .hero img{width:min(340px,82vw);border-radius:24px;border:1px solid #b8860b;box-shadow:0 0 60px rgba(168,85,247,.45),0 0 40px rgba(251,191,36,.25)}
 .hero h1{font-size:clamp(30px,7vw,48px);line-height:1.1;margin:18px 0 8px}
@@ -30,6 +31,7 @@ nav a{color:#d8c8f5}
 .btn:disabled{background:#3b2a55;color:#a78bca;cursor:not-allowed}
 .btn.gold{background:#b8860b;color:#1a1000}
 .btn.ghost{background:transparent;border:1px solid #7c3aed;color:#e9d5ff}
+.btn.live{background:#15803d;color:#f0fdf4}
 section{padding:34px 0 4px}
 .kicker{font-size:12px;letter-spacing:.18em;color:#fbbf24;font-weight:800;text-transform:uppercase}
 h2{font-size:26px;margin:6px 0 10px}
@@ -48,7 +50,10 @@ table{width:100%;border-collapse:collapse;font-size:15px}
 td{padding:10px 6px;border-bottom:1px solid #2f1a52;vertical-align:top}
 td:first-child{color:#b9a6d6;width:46%}
 .note{font-size:13px;color:#a78bca;margin-top:12px}
+.addr{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;word-break:break-all}
 pre{background:#0d0714;border:1px solid #2f1a52;border-radius:12px;padding:14px;overflow-x:auto;font-size:13px;color:#e9d5ff;white-space:pre-wrap;word-break:break-word}
+.qtybtn{background:#12081f;border:1px solid #7c3aed;color:#e9d5ff;border-radius:10px;padding:8px 14px;font-size:15px;font-weight:700;cursor:pointer;margin:2px}
+.qtybtn.active{background:#9333ea;color:#fff;border-color:#9333ea}
 .foot{border-top:1px solid #2f1a52;margin-top:40px;padding-top:18px;color:#a78bca;font-size:13px;text-align:center}
 details{background:#170b28;border:1px solid #2f1a52;border-radius:14px;padding:14px 16px;margin-top:10px}
 details summary{font-weight:700;cursor:pointer}
@@ -57,36 +62,36 @@ details p{margin-top:8px;color:#b9a6d6}
 </style>
 </head>
 <body>
-<div class="banner">PREVIEW ONLY — NO CONTRACT DEPLOYED. MINT DISABLED.
-<small>This is a preview of a NEW Covenant-style version. It is NOT the live HATCHIE (3,333 supply, 0.0005 / 0.005 BNB, hatchieggy.fun). No mint, no token, no listing yet.</small></div>
+<div class="banner">MINT IS LIVE — HATCHIEggy on BNB Chain. First egg free, then 0.001 BNB.
+<small>Contract: <a href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</a> &middot; Agent-only mint, no wallet-connect button here.</small></div>
 <header class="top"><div class="topin">
-  <div class="logo">HATCHIEggy<span>.</span> <span style="font-size:12px;color:#f59e0b">PREVIEW</span></div>
+  <div class="logo">HATCHIEggy<span>.</span> <span class="pill live" style="font-size:12px;margin-left:6px">LIVE</span></div>
   <nav><a href="#mint">Mint</a><a href="#terms">Terms</a><a href="#rite">The Rite</a><a href="#agents">For Agents</a><a href="#token">Token</a><a href="#roadmap">Roadmap</a><a href="#faq">FAQ</a><a href="https://x.com/HATCHIEggy" target="_blank" rel="noopener">𝕏</a></nav>
 </div></header>
 
 <div class="wrap">
   <div class="hero">
-    <span class="pill amber">Covenant-style &middot; Agent-only &middot; BNB Chain</span>
-    <div style="margin-top:16px"><img src="assets/hero.jpg" alt="HATCHIEggy preview egg — golden-purple cracked crystal egg"></div>
+    <span class="pill live">Mint is live &middot; Agent-only &middot; BNB Chain</span>
+    <div style="margin-top:16px"><img src="assets/hero.jpg" alt="HATCHIEggy egg — golden-purple cracked crystal egg"></div>
     <h1>Every Egg Holds <span>a Legend.</span></h1>
     <p>4,444 crystal eggs, sworn by AI agents. One egg, one legend — hatched only by an agent, never by a button.</p>
     <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-      <button class="btn" type="button" disabled>Mint — disabled in preview</button>
+      <a class="btn live" href="#mint">Mint is live — see how your agent mints</a>
       <a class="btn ghost" href="#agents">See the agent prompt</a>
       <a class="btn ghost" href="https://x.com/HATCHIEggy" target="_blank" rel="noopener">𝕏 @HATCHIEggy</a>
     </div>
-    <p class="note" id="previewNote">Planned spec, not on-chain: no contract address exists yet. Do not send BNB to anyone for this preview.</p>
+    <p class="note">Live on BNB Chain (56). NFT contract <a class="addr" href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</a>. Never send BNB to any other address for HATCHIEggy.</p>
   </div>
 
   <section id="mint">
     <div class="kicker">Mint &middot; BNB Chain</div>
     <h2>First egg free. The rest, 0.001 BNB.</h2>
-    <p class="muted">Planned spec (not on-chain yet). Your agent calls <b>mint()</b> once — there is no wallet-connect button here, by design.</p>
+    <p class="muted">Mint is open. Your agent calls <b>mint()</b> — there is no wallet-connect button here, by design. Live numbers below are read from the contract.</p>
     <div class="grid4">
-      <div class="stat"><b>0 / 4,444</b><span>Sworn — preview, not live</span></div>
-      <div class="stat"><b>4,444</b><span>Total supply (planned)</span></div>
-      <div class="stat"><b>Free &rarr; 0.001 BNB</b><span>First free, each after</span></div>
-      <div class="stat"><b>10</b><span>Max per wallet</span></div>
+      <div class="stat"><b id="mintedCount">loading&hellip;</b><span>Minted / 4,444</span></div>
+      <div class="stat"><b>4,444</b><span>Total supply</span></div>
+      <div class="stat"><b id="priceNow">0.001 BNB</b><span>Paid price per egg</span></div>
+      <div class="stat"><b id="mintStatus">loading&hellip;</b><span>Mint status</span></div>
     </div>
     <div class="grid2" style="margin-top:14px">
       <div class="card gold">
@@ -99,16 +104,34 @@ details p{margin-top:8px;color:#b9a6d6}
         <span class="pill">Each after</span>
         <h3 style="margin-top:10px">Paid</h3>
         <div class="price">0.001 BNB <small>per egg</small></div>
-        <p class="muted">Up to 10 eggs per wallet in total. Every paid mint earns a token bonus — see below.</p>
+        <p class="muted">Up to 10 eggs per wallet in total. Every paid mint earns 120,000 HATCH — see below.</p>
       </div>
     </div>
     <div class="card" style="margin-top:14px">
-      <span class="pill amber">Preview mint card</span>
-      <p style="margin-top:10px"><b>Quantity: 1 &nbsp; Total: 0.001 BNB (planned)</b></p>
-      <p class="muted">Mint is disabled in this preview. When live, the quantity total and price will be read from the contract, not typed here.</p>
-      <button class="btn" type="button" disabled style="margin-top:12px">Mint disabled — preview only</button>
+      <span class="pill live">Live mint card</span>
+      <p style="margin-top:10px"><b>Quantity:</b></p>
+      <div style="margin-top:8px">
+        <button class="qtybtn active" type="button" data-qty="1">1</button>
+        <button class="qtybtn" type="button" data-qty="2">2</button>
+        <button class="qtybtn" type="button" data-qty="3">3</button>
+        <button class="qtybtn" type="button" data-qty="5">5</button>
+        <button class="qtybtn" type="button" data-qty="10">10</button>
+      </div>
+      <p style="margin-top:12px"><b>Total: <span id="qtyTotal">0 BNB</span></b> <span class="muted" id="qtyNote">for a wallet whose first mint is still free (first egg free, the rest 0.001 BNB each).</span></p>
+      <p class="muted">Your agent must read the exact price for your wallet with <b>priceFor(address, quantity)</b> before sending — the total above assumes the free first mint is still unused. Send exactly the quoted price; overpaying reverts.</p>
+      <a class="btn live" href="#agents" style="margin-top:12px">Mint via your agent</a>
       <button class="btn gold" type="button" id="copyPromptBtn" style="margin-top:12px">Copy agent prompt</button>
       <p class="note" id="copyStatus"></p>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <span class="pill">Contracts — verified on BscScan</span>
+      <table style="margin-top:10px">
+        <tr><td>NFT (BEP-721)</td><td><a class="addr" href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</a></td></tr>
+        <tr><td>HATCH token (BEP-20)</td><td><a class="addr" href="https://bscscan.com/address/0xE20a294F8a990743ce7Cf66843bBc407e7828FBA" target="_blank" rel="noopener">0xE20a294F8a990743ce7Cf66843bBc407e7828FBA</a></td></tr>
+        <tr><td>Base URI</td><td><span class="addr">https://www.hatchieggy.fun/metadata/</span></td></tr>
+        <tr><td>Rarity</td><td><b>Common 1–2222 &middot; Rare 2223–3333 &middot; Epic 3334–3999 &middot; Legendary 4000–4332 &middot; Mythic 4333–4444</b></td></tr>
+      </table>
+      <p class="note">All eggs share the same golden cracked crystal egg artwork. Rarity and the 7 traits (Shell / Crystal / Gold Trim / Glow / Base / Aura / Rarity) are metadata only — they do not change the artwork.</p>
     </div>
   </section>
 
@@ -117,12 +140,12 @@ details p{margin-top:8px;color:#b9a6d6}
     <h2>The Terms of the Pact</h2>
     <ol class="steps">
       <li><b>4,444 eggs.</b> When the last is sworn, the book is closed. Supply never increases.</li>
-      <li><b>AI agents only.</b> This site never asks you to connect a wallet. Your agent signs for you.</li>
+      <li><b>AI agents only.</b> This site never asks you to connect a wallet. Your agent signs for you. There is no .ai Agent ID gate — any agent that can send a BNB Chain transaction can mint.</li>
       <li><b>Your wallet&rsquo;s first mint is free.</b> Send exactly 0 BNB; you pay only gas.</li>
       <li><b>Every mint after that costs 0.001 BNB.</b> Up to 10 per wallet. Overpaying reverts.</li>
-      <li><b>Every paid mint earns 120,000 HATCH (provisional).</b> Claimable on-chain whenever you like — token name/symbol are provisional, contract TBD.</li>
+      <li><b>Every paid mint earns 120,000 HATCH.</b> Claimable on-chain whenever you like with claim() on the HATCH token contract.</li>
       <li><b>The market opens after sell-out.</b> No trading venue is promised before then.</li>
-      <li><b>Planned, not promised.</b> Anything marked planned may change or not be built. No returns, price or profit are implied.</li>
+      <li><b>No promises.</b> Eggs and HATCH are collectibles. No returns, price or profit are implied.</li>
     </ol>
   </section>
 
@@ -131,7 +154,7 @@ details p{margin-top:8px;color:#b9a6d6}
     <h2>The Rite, in Three Acts</h2>
     <ol class="steps">
       <li><b>Summon an agent.</b> Binance Agentic Wallet, or any AI agent that can send a BNB Chain transaction.</li>
-      <li><b>Hand it the prompt.</b> Copy the prompt below. It carries the contract (TBD), the calldata and the exact price.</li>
+      <li><b>Hand it the prompt.</b> Copy the prompt below. It carries the contract address, the calldata and the exact price.</li>
       <li><b>Seal it.</b> Your agent shows a preview. Approve it and your egg arrives in the agent&rsquo;s wallet. The first is free.</li>
     </ol>
   </section>
@@ -139,26 +162,28 @@ details p{margin-top:8px;color:#b9a6d6}
   <section id="agents">
     <div class="kicker">III &middot; For Agents</div>
     <h2>One call, no arguments: mint()</h2>
-    <p class="muted">The contract (not deployed yet) will enforce the price, the 10-per-wallet cap and the supply on-chain. Contract address: <b>TBD — do not use any address from elsewhere for this preview.</b></p>
+    <p class="muted">The contract enforces the price, the 10-per-wallet cap and the supply on-chain. Contract: <a class="addr" href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</a></p>
     <table style="margin-top:14px">
       <tr><td>Network</td><td><b>BNB Smart Chain &middot; 56</b></td></tr>
       <tr><td>Standard</td><td><b>BEP-721 (NFT)</b></td></tr>
-      <tr><td>Contract</td><td><b>TBD</b></td></tr>
+      <tr><td>Contract</td><td><a class="addr" href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</a></td></tr>
       <tr><td>Function</td><td><b>mint()</b></td></tr>
       <tr><td>Value, first</td><td><b>0 BNB</b></td></tr>
       <tr><td>Value, after</td><td><b>0.001 BNB = 1000000000000000 wei</b></td></tr>
       <tr><td>Batch</td><td><b>mint(uint256 quantity)</b> — value is priceFor(address, quantity); for a new wallet the first one in the batch is free.</td></tr>
-      <tr><td>Price helpers (planned)</td><td><b>nextPrice(address)</b> &middot; <b>priceFor(address, uint256)</b></td></tr>
+      <tr><td>Price helpers</td><td><b>nextPrice(address)</b> &middot; <b>priceFor(address, uint256)</b></td></tr>
+      <tr><td>Sale state</td><td><b>mintOpen()</b> &middot; <b>totalMinted()</b> &middot; <b>MAX_SUPPLY() = 4,444</b></td></tr>
     </table>
     <h3 style="margin-top:18px">Prompt for your agent</h3>
     <pre id="agentPrompt">Mint a HATCHIEggy egg NFT for me on BNB Chain (chainId 56).
-NFT contract: TBD — no contract is deployed for this preview.
-Do NOT mint yet. This is a preview page.
-Planned rules, for checking only:
+NFT contract: 0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8
+BscScan: https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8
+Mint is LIVE.
+Rules (enforced on-chain):
 - Supply 4,444. First mint free (0 BNB + gas), each after 0.001 BNB.
 - Max 10 per wallet. Agent-only mint: mint().
-- Every paid mint earns 120,000 HATCH (provisional token).
-Steps when live:
+- Every paid mint earns 120,000 HATCH (token 0xE20a294F8a990743ce7Cf66843bBc407e7828FBA, claim with claim()).
+Steps:
 1. Call mintOpen(), totalMinted(), nextPrice(MY_WALLET) and show the exact price first.
 2. Only after I confirm, call mint(QUANTITY) sending exactly the quoted price.
 3. Afterwards, report the transaction hash and my new token IDs.</pre>
@@ -169,18 +194,19 @@ Steps when live:
   <section id="token">
     <div class="kicker">IV &middot; Paid-mint bonus &middot; BEP-20</div>
     <h2>+120,000 HATCH per paid mint</h2>
-    <p class="muted"><b>HATCH is a provisional placeholder name.</b> It is not deployed, not listed, and has no price. Final token name/symbol are still to be confirmed.</p>
+    <p class="muted">HATCH is live on BNB Chain: <a class="addr" href="https://bscscan.com/address/0xE20a294F8a990743ce7Cf66843bBc407e7828FBA" target="_blank" rel="noopener">0xE20a294F8a990743ce7Cf66843bBc407e7828FBA</a>. It is a bonus token for paid mints — not listed, and it has no price.</p>
     <p style="margin-top:10px">Every paid mint (each one after your free first) earns 120,000 HATCH. Up to 1,080,000 HATCH per wallet. It is retroactive: mint first, claim whenever.</p>
     <table style="margin-top:14px">
-      <tr><td>Token</td><td><b>HATCH (provisional) &middot; 18 decimals</b></td></tr>
-      <tr><td>Contract</td><td><b>TBD</b></td></tr>
-      <tr><td>Total supply (planned)</td><td><b>1,000,000,000</b></td></tr>
-      <tr><td>Bonus pool (planned)</td><td><b>540,000,000 held by the token contract</b></td></tr>
-      <tr><td>Claim (planned)</td><td><b>claim()</b> &middot; value 0 &middot; <b>claimFor(address)</b> &middot; <b>claimable(address)</b></td></tr>
+      <tr><td>Token</td><td><b>HATCH &middot; 18 decimals</b></td></tr>
+      <tr><td>Contract</td><td><a class="addr" href="https://bscscan.com/address/0xE20a294F8a990743ce7Cf66843bBc407e7828FBA" target="_blank" rel="noopener">0xE20a294F8a990743ce7Cf66843bBc407e7828FBA</a></td></tr>
+      <tr><td>Total supply</td><td><b>1,000,000,000</b></td></tr>
+      <tr><td>Bonus pool</td><td><b>540,000,000 held by the token contract</b></td></tr>
+      <tr><td>Owner treasury</td><td><b>460,000,000</b></td></tr>
+      <tr><td>Claim</td><td><b>claim()</b> &middot; value 0 &middot; <b>claimFor(address)</b> &middot; <b>claimable(address)</b></td></tr>
     </table>
-    <p class="note">The pool is larger than the most any 4,444-piece mint could pay out (4,444 &times; 120,000 = 533,280,000). Numbers mirror the Agent Covenant draft and are provisional.</p>
+    <p class="note">The pool is larger than the most any 4,444-piece mint could pay out (4,444 &times; 120,000 = 533,280,000 &lt; 540,000,000).</p>
     <h3 style="margin-top:18px">What the pact grants</h3>
-    <p class="muted"><b>Live at launch (planned):</b> +120,000 HATCH per paid mint, agent-native mint, verifiable rarity, free first mint.</p>
+    <p class="muted"><b>Live now:</b> +120,000 HATCH per paid mint, agent-native mint, verifiable rarity, free first mint.</p>
     <p class="muted"><b>Planned, not yet live:</b> HATCH staking, holder-gated perks, rarity-weighted rewards, holder voting, future allowlists. Planned items are intentions, not promises.</p>
   </section>
 
@@ -188,7 +214,7 @@ Steps when live:
     <div class="kicker">V &middot; Roadmap</div>
     <h2>Four phases, each a goal — not a guarantee.</h2>
     <ol class="steps">
-      <li><b>At launch — The Hatching.</b> Agent mint goes live. HATCH bonus claims open. Listing on NFT calendars.</li>
+      <li><b>At launch — The Hatching.</b> Agent mint is live. HATCH bonus claims are open. Listing on NFT calendars.</li>
       <li><b>At 50% minted — The Pact.</b> Holder community on Discord and X. A rarity explorer. An agent mint leaderboard.</li>
       <li><b>At sell-out — The Legend Sealed.</b> The market opens on Element and OpenSea. HATCH staking launches.</li>
       <li><b>After sell-out — Beyond the Shell.</b> DAO-style voting with HATCH. Collaborations with other agent projects. Next-collection allowlist for holders.</li>
@@ -198,45 +224,47 @@ Steps when live:
   <section id="faq">
     <div class="kicker">VI &middot; Questions</div>
     <h2>Questions</h2>
-    <details><summary>Which agents can mint?</summary><p>Planned: Binance Agentic Wallet, or any agent that can send a BNB Chain transaction. Whether a .ai Agent ID gate is required is still to be confirmed.</p></details>
+    <details><summary>Which agents can mint?</summary><p>Binance Agentic Wallet, or any agent that can send a BNB Chain transaction. There is no .ai Agent ID gate on this contract — any agent can mint, up to 10 per wallet.</p></details>
     <details><summary>Why would my agent&rsquo;s mint fail?</summary><p>Almost always the amount. Send exactly 0 for a wallet&rsquo;s first mint and exactly 0.001 BNB for each after; overpaying also reverts. Ask the agent to read nextPrice(address) first. Also check the wallet has not reached 10.</p></details>
-    <details><summary>How do I get my HATCH?</summary><p>When live: ask your agent to call claim() on the HATCH token from the minting wallet, or claimFor(address) from any wallet. claimable(address) shows what is waiting. Not available in this preview — no token contract exists yet.</p></details>
-    <details><summary>Can I mint several at once?</summary><p>Planned: yes — mint(uint256 quantity). The value is priceFor(address, quantity); for a new wallet the first one in the batch is free.</p></details>
-    <details><summary>Where does the art live?</summary><p>This preview shows one hero egg. Final per-token artwork and metadata hosting are still to be confirmed before any mint opens.</p></details>
-    <details><summary>Is this an investment?</summary><p>No. Eggs and HATCH are collectibles. Live features are on-chain only after deployment; everything marked planned is a goal that may change. Never spend more than you are happy to keep as art.</p></details>
+    <details><summary>How do I get my HATCH?</summary><p>Ask your agent to call claim() on the HATCH token (0xE20a294F8a990743ce7Cf66843bBc407e7828FBA) from the minting wallet, or claimFor(address) from any wallet. claimable(address) shows what is waiting.</p></details>
+    <details><summary>Can I mint several at once?</summary><p>Yes — mint(uint256 quantity). The value is priceFor(address, quantity); for a new wallet the first one in the batch is free.</p></details>
+    <details><summary>Where does the art live?</summary><p>Every egg shares the same golden cracked crystal egg artwork (assets/hero.jpg). Metadata is live at www.hatchieggy.fun/metadata/1 … /4444. Rarity (Common 1–2222, Rare 2223–3333, Epic 3334–3999, Legendary 4000–4332, Mythic 4333–4444) and traits are metadata only.</p></details>
+    <details><summary>Is this an investment?</summary><p>No. Eggs and HATCH are collectibles. Never spend more than you are happy to keep as art.</p></details>
   </section>
 
   <section id="support">
     <div class="kicker">Support</div>
     <h2>Support HATCHIEggy</h2>
-    <p class="muted">Follow the official account and share the preview. Like / comment / repost target individual posts on X.</p>
+    <p class="muted">Follow the official account and share the live mint.</p>
     <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
       <a class="btn" href="https://x.com/HATCHIEggy" target="_blank" rel="noopener">𝕏 @HATCHIEggy</a>
       <a class="btn ghost" href="https://x.com/intent/follow?screen_name=HATCHIEggy" target="_blank" rel="noopener">Follow @HATCHIEggy</a>
-      <a class="btn ghost" href="https://x.com/intent/tweet?text=HATCHIEggy%20%E2%80%94%20Every%20Egg%20Holds%20a%20Legend.%20Covenant-style%20preview%3A%204%2C444%20eggs%2C%20first%20free%2C%20then%200.001%20BNB%2C%20agent-only%20mint%20%40HATCHIEggy" target="_blank" rel="noopener">Share on 𝕏</a>
+      <a class="btn ghost" href="https://x.com/intent/tweet?text=HATCHIEggy%20%E2%80%94%20Every%20Egg%20Holds%20a%20Legend.%20MINT%20IS%20LIVE%3A%204%2C444%20eggs%2C%20first%20free%2C%20then%200.001%20BNB%2C%20agent-only%20mint%20%40HATCHIEggy%20https%3A%2F%2Fwww.hatchieggy.fun%2F" target="_blank" rel="noopener">Share on 𝕏</a>
     </div>
   </section>
 
   <section id="spec">
-    <div class="kicker">Spec sheet — planned</div>
-    <h2>HATCHIEggy (Covenant-style preview) — spec</h2>
+    <div class="kicker">Spec sheet — live</div>
+    <h2>HATCHIEggy — live spec</h2>
     <table>
       <tr><td>Name</td><td><b>HATCHIEggy</b> — Every Egg Holds a Legend</td></tr>
       <tr><td>Chain</td><td><b>BNB Chain Mainnet (56)</b></td></tr>
-      <tr><td>Standard</td><td><b>BEP-721 (NFT)</b> + BEP-20 bonus token HATCH (provisional)</td></tr>
-      <tr><td>Total supply</td><td><b>4,444</b> (planned — different from live HATCHIE&rsquo;s 3,333)</td></tr>
+      <tr><td>Standard</td><td><b>BEP-721 (NFT)</b> + BEP-20 bonus token HATCH</td></tr>
+      <tr><td>Total supply</td><td><b>4,444</b></td></tr>
       <tr><td>Price</td><td><b>First free (gas only), each after 0.001 BNB</b></td></tr>
       <tr><td>Max per wallet</td><td><b>10</b></td></tr>
-      <tr><td>Bonus token</td><td><b>+120,000 HATCH per paid mint</b> (provisional)</td></tr>
-      <tr><td>Contract</td><td><b>TBD — not deployed</b></td></tr>
+      <tr><td>Bonus token</td><td><b>+120,000 HATCH per paid mint</b></td></tr>
+      <tr><td>NFT contract</td><td><a class="addr" href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</a></td></tr>
+      <tr><td>HATCH contract</td><td><a class="addr" href="https://bscscan.com/address/0xE20a294F8a990743ce7Cf66843bBc407e7828FBA" target="_blank" rel="noopener">0xE20a294F8a990743ce7Cf66843bBc407e7828FBA</a></td></tr>
+      <tr><td>Base URI</td><td><span class="addr">https://www.hatchieggy.fun/metadata/</span></td></tr>
       <tr><td>X</td><td><b><a href="https://x.com/HATCHIEggy" target="_blank" rel="noopener">@HATCHIEggy</a></b></td></tr>
     </table>
-    <p class="note">This preview is not the live HATCHIE page. Live HATCHIE: 3,333 supply, Phase 1 0.0005 BNB / Phase 2 0.005 BNB, contract 0x28918c8DA0836dC984057a04865b17A5820398fb, at www.hatchieggy.fun — untouched by this preview.</p>
+    <p class="note">This is the NEW HATCHIEggy project (4,444, Covenant-style, agent-only). It is not the older HATCHIE page: 3,333 supply, Phase 1 0.0005 BNB / Phase 2 0.005 BNB, contract 0x28918c8DA0836dC984057a04865b17A5820398fb, which now lives only at hatchie.vercel.app.</p>
   </section>
 
   <div class="foot">
-    PREVIEW ONLY — no contract, no mint, no token, no listing.<br>
-    HATCHIEggy (preview) &copy; 2026 &middot; BNB Chain &middot; <a href="https://x.com/HATCHIEggy" target="_blank" rel="noopener">@HATCHIEggy</a>
+    MINT IS LIVE — NFT 0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8 &middot; HATCH 0xE20a294F8a990743ce7Cf66843bBc407e7828FBA<br>
+    HATCHIEggy &copy; 2026 &middot; BNB Chain &middot; <a href="https://x.com/HATCHIEggy" target="_blank" rel="noopener">@HATCHIEggy</a>
   </div>
 </div>
 <script src="app.js"></script>
