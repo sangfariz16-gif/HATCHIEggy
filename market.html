@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HATCHIEggy Market — Buy &amp; Sell HATCHIEggy Eggs</title>
+<meta name="description" content="HATCHIEggy secondary market on BNB Chain. Fixed-price listings, 0% platform fee, 5% creator royalty.">
+<style>
+:root{--bg:#0d0714;--bg2:#12081f;--card:#170b28;--card2:#2a1845;--line:#2f1a52;--purple:#9333ea;--gold:#fbbf24;--gold2:#b8860b;--txt:#f5efff;--mut:#b9a6d6;--mut2:#a78bca;--green:#15803d}
+*{box-sizing:border-box;margin:0;padding:0}
+html{overflow-x:hidden}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
+a{color:var(--gold);text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 14px 48px}
+header{position:sticky;top:0;z-index:10;background:rgba(5,3,8,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+header .in{max-width:960px;margin:0 auto;padding:12px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+header .logo{font-weight:800;font-size:18px}
+header .logo span{color:var(--gold)}
+header nav{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--txt);background:var(--card)}
+button,.btn{cursor:pointer;border:0;border-radius:10px;padding:10px 16px;font-size:14px;font-weight:700;background:var(--purple);color:#fff}
+button.gold{background:var(--gold);color:#1a1005}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--txt)}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.sm{padding:7px 12px;font-size:13px}
+.hero{padding:28px 0 8px;text-align:center}
+.hero h1{font-size:clamp(30px,9vw,46px);line-height:1.1}
+.hero h1 span{color:var(--gold)}
+.hero p{color:var(--mut);margin-top:10px;font-size:15px}
+.banner{margin:16px 0;border:1px solid var(--gold2);background:#3a2a10;color:#fde68a;border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.stat b{display:block;font-size:22px;color:var(--gold)}
+.stat span{font-size:12px;color:var(--mut)}
+.note{font-size:13px;color:var(--mut);margin:4px 0 18px;text-align:center}
+h2{font-size:20px;margin:26px 0 12px}
+h2 span{color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card img{width:100%;aspect-ratio:1;display:block;object-fit:cover;background:var(--card2)}
+.card .bd{padding:10px 12px 12px}
+.card .tid{font-weight:800;font-size:15px}
+.card .tier{font-size:12px;color:var(--mut2)}
+.card .price{color:var(--gold);font-weight:800;margin:8px 0}
+.card .price small{color:var(--mut);font-weight:400}
+.card button{width:100%}
+.empty{color:var(--mut);text-align:center;padding:28px 10px;border:1px dashed var(--line);border-radius:14px;font-size:14px}
+form.card2{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px}
+label{font-size:13px;color:var(--mut)}
+input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);color:var(--txt);font-size:15px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1;min-width:140px}
+.status{font-size:13px;color:var(--mut);line-height:1.5;min-height:20px}
+.status.ok{color:#bbf7d0}.status.err{color:#fca5a5}
+.mine{display:grid;gap:10px}
+.mine .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.mine .item b{font-size:15px}
+.mine .item .p{color:var(--gold);font-weight:700}
+.mine .item input{max-width:130px}
+footer{margin-top:36px;border-top:1px solid var(--line);padding-top:18px;font-size:13px;color:var(--mut);line-height:1.7}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:#e9d5ff;word-break:break-all}
+@media(max-width:560px){.stats{grid-template-columns:repeat(3,1fr);gap:8px}.stat b{font-size:18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="in">
+    <div class="logo">🥚 HATCHIEggy <span>Market</span></div>
+    <nav>
+      <a class="pill" href="https://www.hatchieggy.fun/" target="_blank" rel="noopener">← Mint page</a>
+      <button id="connectBtn" class="sm">Connect wallet</button>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+  <section class="hero">
+    <h1>Buy &amp; sell <span>HATCHIEggy</span> eggs</h1>
+    <p>Fixed-price secondary market on BNB Chain. 0% platform fee — only the 5% creator royalty applies on every sale.</p>
+  </section>
+
+  <div id="deployBanner" class="banner" style="display:none">⏳ The market contract is <b>not deployed yet</b>. Listings, buying and cancelling will unlock here as soon as the contract is live. Nothing on this page trades until then.</div>
+
+  <div class="stats" id="liveStats">
+    <div class="stat"><b id="statListed">–</b><span>eggs listed</span></div>
+    <div class="stat"><b id="statFloor">–</b><span>floor price (BNB)</span></div>
+    <div class="stat"><b id="statMinted">–</b><span>minted / 4,444</span></div>
+  </div>
+  <p class="note" id="statNote">Loading live data…</p>
+
+  <h2>🔥 <span>Listed</span> eggs</h2>
+  <div class="grid" id="listingsGrid"><div class="empty">Loading listings…</div></div>
+
+  <h2>📝 <span>List</span> your egg</h2>
+  <form class="card2" id="listForm">
+    <div class="row">
+      <div><label>Token ID</label><input id="listTokenId" type="number" min="1" max="4444" placeholder="e.g. 131"></div>
+      <div><label>Price (BNB)</label><input id="listPrice" type="text" inputmode="decimal" placeholder="e.g. 0.005"></div>
+    </div>
+    <div class="row">
+      <button type="button" id="approveBtn">1 · Approve market</button>
+      <button type="button" id="doListBtn" class="gold">2 · List egg</button>
+    </div>
+    <div class="status" id="listStatus">Approve first (one-time per wallet), then list. Listing moves your egg into market escrow — cancel any time to get it back.</div>
+  </form>
+
+  <h2>🗂️ <span>My</span> listings</h2>
+  <div class="mine" id="myListings"><div class="empty">Connect your wallet to see your listings.</div></div>
+
+  <footer>
+    <div>Market contract: <code id="marketAddr">not deployed yet</code></div>
+    <div>NFT contract: <code>0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8</code> (<a href="https://bscscan.com/address/0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8" target="_blank" rel="noopener">BscScan</a>)</div>
+    <div>How it works: list → your egg sits in market escrow → a buyer pays the exact price → 5% royalty goes to the creator, the rest to you, and the egg goes to the buyer. Cancel any time before a sale. No platform fee, ever — the contract has no fee logic at all.</div>
+    <div>⚠️ This is a new, unaudited contract. Trade only what you understand; the market never holds your BNB except during a sale, and escrowed eggs can always be reclaimed by cancelling.</div>
+  </footer>
+</div>
+<script>
+"use strict";
+// MARKETPLACE ADDRESS — REPLACE AFTER DEPLOY. While this is the zero address
+// the page is NOT live: stats show "not deployed", and Buy/List buttons stay disabled.
+var MARKETPLACE = "0x2bA2Cd04023F8c4f82bD4A518A5831414C3c4b7f";
+var NFT = "0xF2a6D1A5Da92d611cf8eC614548D4d6E83BEB6D8";
+var NFT_NAME = "HATCHIEggy";
+var META_BASE = "https://www.hatchieggy.fun/metadata/";
+var MAX_SUPPLY = 4444;
+var BSC_CHAIN_ID = 56;
+
+var RPCS = [
+  "https://bsc-dataseed1.defibit.io/",
+  "https://bsc-dataseed.binance.org/",
+  "https://bsc-dataseed1.ninicoin.io/"
+];
+
+// selectors
+var SEL_LISTED_IDS = "0x05337198";          // getListedIds()
+var SEL_LISTING = "0x107a274a";             // getListing(uint256)
+var SEL_TOTAL_SUPPLY = "0x18160ddd";        // totalSupply()
+var SEL_BUY = "0xd96a094a";                 // buy(uint256)
+var SEL_LIST = "0x50fd7367";                // list(uint256,uint256)
+var SEL_CANCEL = "0x40e58ee5";              // cancel(uint256)
+var SEL_UPDATE = "0x82367b2d";              // updatePrice(uint256,uint256)
+var SEL_APPROVE_ALL = "0xa22cb465";         // setApprovalForAll(address,bool)
+var SEL_IS_APPROVED = "0xe985e9c5";         // isApprovedForAll(address,address)
+
+var connected = null;
+var isDeployed = MARKETPLACE !== "0x2bA2Cd04023F8c4f82bD4A518A5831414C3c4b7f";
+
+function $(id) { return document.getElementById(id); }
+function shortAddr(a) { return a ? a.slice(0, 6) + "…" + a.slice(-4) : ""; }
+function hexPad32(n) { return n.toString(16).padStart(64, "0"); }
+function fmtBnb(wei) {
+  try {
+    var b = BigInt(wei);
+    var whole = b / 1000000000000000000n;
+    var frac = b % 1000000000000000000n;
+    var f = frac.toString().padStart(18, "0").replace(/0+$/, "");
+    return whole.toString() + (f ? "." + f.slice(0, 6) : "");
+  } catch (e) { return "?"; }
+}
+function parseBnb(str) {
+  var s = String(str).trim();
+  if (!/^\d+(\.\d+)?$/.test(s)) return null;
+  var parts = s.split(".");
+  var whole = BigInt(parts[0] || "0") * 1000000000000000000n;
+  var frac = parts[1] ? BigInt((parts[1] + "000000000000000000").slice(0, 18)) : 0n;
+  return whole + frac;
+}
+
+async function rpcCall(to, data) {
+  var body = JSON.stringify({ jsonrpc: "2.0", id: 1, method: "eth_call", params: [{ to: to, data: data }, "latest"] });
+  for (var i = 0; i < RPCS.length; i++) {
+    var ctrl = new AbortController();
+    var t = setTimeout(function () { ctrl.abort(); }, 10000);
+    try {
+      var res = await fetch(RPCS[i], { method: "POST", headers: { "Content-Type": "application/json" }, body: body, signal: ctrl.signal });
+      clearTimeout(t);
+      if (!res.ok) continue;
+      var j = await res.json();
+      if (j && j.result) return j.result;
+    } catch (e) { clearTimeout(t); }
+  }
+  throw new Error("all RPCs failed");
+}
+
+async function getListedIds() {
+  var raw = await rpcCall(MARKETPLACE, SEL_LISTED_IDS);
+  var n = parseInt(raw.slice(66, 130), 16);
+  var ids = [];
+  for (var k = 0; k < n; k++) ids.push(parseInt(raw.slice(130 + k * 64, 130 + (k + 1) * 64), 16));
+  return ids;
+}
+async function getListing(id) {
+  var raw = await rpcCall(MARKETPLACE, SEL_LISTING + hexPad32(id));
+  var seller = "0x" + raw.slice(26, 66);
+  var price = BigInt("0x" + raw.slice(66, 130));
+  var active = raw.slice(130, 194) !== "0000000000000000000000000000000000000000000000000000000000000000";
+  return { seller: seller, price: price, active: active };
+}
+async function getTotalMinted() {
+  var raw = await rpcCall(NFT, SEL_TOTAL_SUPPLY);
+  return parseInt(raw, 16);
+}
+async function getMeta(id) {
+  try {
+    var res = await fetch(META_BASE + id, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (e) { return null; }
+}
+function tierOf(meta) {
+  if (!meta || !meta.attributes) return "";
+  for (var i = 0; i < meta.attributes.length; i++) {
+    if (meta.attributes[i].trait_type === "Tier") return meta.attributes[i].value;
+  }
+  return "";
+}
+
+async function readLive() {
+  var note = $("statNote");
+  if (!isDeployed) {
+    $("deployBanner").style.display = "block";
+    $("marketAddr").textContent = "not deployed yet";
+    note.textContent = "Market contract not deployed yet — deploy first, then live listings appear here.";
+    $("listingsGrid").innerHTML = '<div class="empty">Market not deployed yet. Come back after launch.</div>';
+    // minted count is still readable from the NFT contract
+    try {
+      var m = await getTotalMinted();
+      $("statMinted").textContent = m + " / " + MAX_SUPPLY;
+    } catch (e) { $("statMinted").textContent = "–"; }
+    return;
+  }
+  $("marketAddr").textContent = MARKETPLACE;
+  try {
+    var ids = await getListedIds();
+    var minted = await getTotalMinted();
+    $("statListed").textContent = ids.length;
+    $("statMinted").textContent = minted + " / " + MAX_SUPPLY;
+    var floor = null;
+    var rows = [];
+    for (var i = 0; i < ids.length; i++) {
+      var l = await getListing(ids[i]);
+      if (!l.active) continue;
+      rows.push({ id: ids[i], seller: l.seller, price: l.price });
+      if (floor === null || l.price < floor) floor = l.price;
+    }
+    $("statFloor").textContent = floor === null ? "—" : fmtBnb(floor.toString());
+    note.textContent = "Live on BNB Chain · 0% platform fee · 5% creator royalty on every sale.";
+    renderListings(rows);
+    if (connected) renderMine(rows);
+  } catch (e) {
+    note.textContent = "Live data unavailable right now (RPC error) — please refresh. No numbers shown are guesses.";
+  }
+}
+
+function cardHtml(row, meta) {
+  var img = meta && meta.image ? meta.image : "";
+  var tier = tierOf(meta);
+  var name = meta && meta.name ? meta.name : (NFT_NAME + " #" + row.id);
+  var isMine = connected && row.seller.toLowerCase() === connected.toLowerCase();
+  return '<div class="card">' +
+    (img ? '<img src="' + img + '" alt="' + name + '" loading="lazy">' : '<div style="aspect-ratio:1;background:#2a1845"></div>') +
+    '<div class="bd"><div class="tid">' + name + '</div>' +
+    '<div class="tier">' + (tier ? tier + " · " : "") + 'Seller ' + shortAddr(row.seller) + '</div>' +
+    '<div class="price">' + fmtBnb(row.price.toString()) + ' BNB</div>' +
+    '<button data-buy="' + row.id + '" data-price="' + row.price.toString() + '"' + (isDeployed ? "" : " disabled") + '>' + (isMine ? "Your listing" : "Buy") + '</button>' +
+    '</div></div>';
+}
+
+async function renderListings(rows) {
+  var grid = $("listingsGrid");
+  if (!rows.length) { grid.innerHTML = '<div class="empty">No eggs listed right now. Be the first to list one below.</div>'; return; }
+  grid.innerHTML = '<div class="empty">Loading ' + rows.length + ' listing(s)…</div>';
+  var html = "";
+  for (var i = 0; i < rows.length; i++) {
+    var meta = await getMeta(rows[i].id);
+    html += cardHtml(rows[i], meta);
+  }
+  grid.innerHTML = html;
+  grid.querySelectorAll("[data-buy]").forEach(function (b) {
+    b.addEventListener("click", function () { doBuy(b.getAttribute("data-buy"), b.getAttribute("data-price")); });
+  });
+}
+
+async function renderMine(rows) {
+  var box = $("myListings");
+  var mine = rows.filter(function (r) { return r.seller.toLowerCase() === connected.toLowerCase(); });
+  if (!mine.length) { box.innerHTML = '<div class="empty">You have no active listings.</div>'; return; }
+  var html = "";
+  mine.forEach(function (r) {
+    html += '<div class="item"><b>#' + r.id + '</b><span class="p">' + fmtBnb(r.price.toString()) + ' BNB</span>' +
+      '<input type="text" inputmode="decimal" placeholder="New price BNB" data-newprice="' + r.id + '">' +
+      '<button class="sm" data-update="' + r.id + '">Update price</button>' +
+      '<button class="sm ghost" data-cancel="' + r.id + '">Cancel</button></div>';
+  });
+  box.innerHTML = html;
+  box.querySelectorAll("[data-cancel]").forEach(function (b) {
+    b.addEventListener("click", function () { doCancel(b.getAttribute("data-cancel")); });
+  });
+  box.querySelectorAll("[data-update]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var inp = box.querySelector('[data-newprice="' + b.getAttribute("data-update") + '"]');
+      doUpdatePrice(b.getAttribute("data-update"), inp.value);
+    });
+  });
+}
+
+// ---- wallet ----
+async function connectWallet() {
+  if (!window.ethereum) { alert("No wallet found. Install MetaMask or open this page in the Binance Wallet app."); return; }
+  try {
+    var accs = await window.ethereum.request({ method: "eth_requestAccounts" });
+    connected = accs[0];
+    $("connectBtn").textContent = shortAddr(connected);
+    await ensureBsc();
+    readLive();
+  } catch (e) { alert("Wallet connection failed: " + (e && e.message ? e.message : e)); }
+}
+async function ensureBsc() {
+  try {
+    var chainId = await window.ethereum.request({ method: "eth_chainId" });
+    if (parseInt(chainId, 16) !== BSC_CHAIN_ID) {
+      await window.ethereum.request({ method: "wallet_switchEthereumChain", params: [{ chainId: "0x38" }] });
+    }
+  } catch (e) {
+    if (e && e.code === 4902) {
+      await window.ethereum.request({ method: "wallet_addEthereumChain", params: [{ chainId: "0x38", chainName: "BNB Smart Chain", nativeCurrency: { name: "BNB", symbol: "BNB", decimals: 18 }, rpcUrls: ["https://bsc-dataseed.binance.org/"], blockExplorerUrls: ["https://bscscan.com"] }] });
+    } else { throw e; }
+  }
+}
+async function sendTx(to, data, valueWei) {
+  if (!connected) { await connectWallet(); if (!connected) return null; }
+  await ensureBsc();
+  var tx = { from: connected, to: to, data: data };
+  if (valueWei) tx.value = "0x" + BigInt(valueWei).toString(16);
+  var hash = await window.ethereum.request({ method: "eth_sendTransaction", params: [tx] });
+  return hash;
+}
+function setStatus(msg, cls) {
+  var el = $("listStatus");
+  el.textContent = msg;
+  el.className = "status" + (cls ? " " + cls : "");
+}
+
+async function doApprove() {
+  if (!isDeployed) { setStatus("Market contract not deployed yet.", "err"); return; }
+  try {
+    setStatus("Waiting for approval in your wallet…");
+    var data = SEL_APPROVE_ALL + hexPad32(BigInt(MARKETPLACE)) + hexPad32(1);
+    var h = await sendTx(NFT, data, null);
+    if (h) setStatus("Approved! Tx " + h.slice(0, 18) + "… — now press “List egg”.", "ok");
+  } catch (e) { setStatus("Approval failed: " + (e && e.message ? e.message : e), "err"); }
+}
+async function doList() {
+  if (!isDeployed) { setStatus("Market contract not deployed yet.", "err"); return; }
+  var id = parseInt($("listTokenId").value, 10);
+  var price = parseBnb($("listPrice").value);
+  if (!id || id < 1 || id > MAX_SUPPLY) { setStatus("Enter a valid Token ID (1–4444).", "err"); return; }
+  if (price === null || price <= 0n) { setStatus("Enter a valid price in BNB (> 0).", "err"); return; }
+  try {
+    setStatus("Listing egg #" + id + " for " + fmtBnb(price.toString()) + " BNB… confirm in your wallet.");
+    var data = SEL_LIST + hexPad32(id) + hexPad32(price);
+    var h = await sendTx(MARKETPLACE, data, null);
+    if (h) { setStatus("Listed! Tx " + h.slice(0, 18) + "… — refreshing.", "ok"); setTimeout(readLive, 3000); }
+  } catch (e) { setStatus("List failed: " + (e && e.message ? e.message : e), "err"); }
+}
+async function doBuy(id, priceWei) {
+  if (!isDeployed) { alert("Market contract not deployed yet."); return; }
+  try {
+    var h = await sendTx(MARKETPLACE, SEL_BUY + hexPad32(parseInt(id, 10)), priceWei);
+    if (h) { alert("Bought egg #" + id + "! Tx " + h.slice(0, 18) + "…"); setTimeout(readLive, 3000); }
+  } catch (e) { alert("Buy failed: " + (e && e.message ? e.message : e)); }
+}
+async function doCancel(id) {
+  try {
+    var h = await sendTx(MARKETPLACE, SEL_CANCEL + hexPad32(parseInt(id, 10)), null);
+    if (h) { alert("Cancelled listing #" + id + ". Tx " + h.slice(0, 18) + "…"); setTimeout(readLive, 3000); }
+  } catch (e) { alert("Cancel failed: " + (e && e.message ? e.message : e)); }
+}
+async function doUpdatePrice(id, priceStr) {
+  var price = parseBnb(priceStr);
+  if (price === null || price <= 0n) { alert("Enter a valid new price in BNB (> 0)."); return; }
+  try {
+    var h = await sendTx(MARKETPLACE, SEL_UPDATE + hexPad32(parseInt(id, 10)) + hexPad32(price), null);
+    if (h) { alert("Price updated for #" + id + ". Tx " + h.slice(0, 18) + "…"); setTimeout(readLive, 3000); }
+  } catch (e) { alert("Update failed: " + (e && e.message ? e.message : e)); }
+}
+
+$("connectBtn").addEventListener("click", connectWallet);
+$("approveBtn").addEventListener("click", doApprove);
+$("doListBtn").addEventListener("click", doList);
+if (!isDeployed) {
+  $("approveBtn").disabled = true;
+  $("doListBtn").disabled = true;
+}
+if (window.ethereum && window.ethereum.selectedAddress) {
+  connected = window.ethereum.selectedAddress;
+  $("connectBtn").textContent = shortAddr(connected);
+}
+readLive();
+setInterval(readLive, 30000);
+</script>
+</body>
+</html>
